@@ -1,0 +1,104 @@
+*******************************************************************************************************
+For loop in bash
+*******************************************************************************************************
+for dir in */; do
+    echo "$dir"
+done
+
+myArray=("cat" "dog" "mouse" "frog")
+for str in ${myArray[@]}; do
+  echo $str
+done
+
+running the ls command using the for loop
+for dir in */; do
+    echo "$dir" -----------------------------------
+    cd "$dir"
+    ls
+    cd ..
+    echo -----------------------------------------
+done
+
+
+for dir in */; do
+    echo "$dir" -----------------------------------
+    cd "$dir"
+    ls
+    cd ..
+    echo -----------------------------------------
+done
+
+
+myArray=("UMTInfrastructure"   "UMTExecutionStateLambda"   "UMTExecutionInitializerLambda"   "UMTWorkflowLambda"   "UMTAutoClassificationLambda"   "UMTMappingLambda"   "UMTTransformationLambda"   "UMTFileValidationLambda"   "UMTEnrichmentLambda"   "UMTTemplateGenerationLambda"  "UMTMapperLambda")
+for str in ${myArray[@]}; do
+  echo $str --------------------------------------
+  cd $str
+  brazil ws use --versionset $str/development
+  sed -i 's/SAM_ASSUME_ACCOUNT_ID/SAM_CONDUIT_ADMIN_ACCOUNT_ID/g' SAMToolkit.devenv
+  sed -i 's/SAM_IDENTITY_BROKER_POSIX_GROUP_NAME/# SAM_IDENTITY_BROKER_POSIX_GROUP_NAME/g' SAMToolkit.devenv
+  ./sam package && ./sam deploy
+  echo you wanna move to next folder?
+  read sucess
+  cd ..
+  echo -------------------------------------------
+done
+
+*******************************************************************************************************
+To replace the some values in the file
+*******************************************************************************************************
+
+*******************************************************************************************************
+To replace the some values in the file
+*******************************************************************************************************
+
+find . -name "SAMToolkit.devenv"
+
+cd ..
+cd UMTMapperLambda
+brazil ws use --versionset UMTMapperLambda/development
+sed -i 's/SAM_ASSUME_ACCOUNT_ID/SAM_CONDUIT_ADMIN_ACCOUNT_ID/g' SAMToolkit.devenv
+sed -i 's/SAM_IDENTITY_BROKER_POSIX_GROUP_NAME/# SAM_IDENTITY_BROKER_POSIX_GROUP_NAME/g' SAMToolkit.devenv
+./sam package && ./sam deploy
+
+ UMTFileValidationLambda
+
+*******************************************************************************************************
+
+
+*******************************************************************************************************
+grep commands
+*******************************************************************************************************
+grep -r searchterm *
+*******************************************************************************************************
+
+
+*******************************************************************************************************
+sed commands
+*******************************************************************************************************
+1. sed 's/word1/word2/g' input.file
+the above command will replace the word1 by word2 and print on the screen. It will not update the file.
+
+
+## *bsd/macos sed syntax#
+2. sed 's/word1/word2/g' input.file > output.file
+the above command will replace the word1 by word2 and save it to sepeate file called output.file
+
+
+3. sed -i 's/word1/word2/g' input.file
+the above command will replace the word1 by word2 and also update the file
+
+4. sed -i -e 's/word1/word2/g' -e 's/xx/yy/g' input.file
+
+5.
+## use + separator instead of / ##
+sed -i 's+regex+new-text+g' file.txt
+
+as our word1 and word may contain / that time we can use + instead of /
+e.g.
+sed 's+http://+https://www.cyberciti.biz+g' input.txt
+
+
+find ./ -type f -exec sed -i -e 's/apple/orange/g' {} \;
+to replace  word apple with word orange in all the sub-directory using the find and sed commands
+
+*******************************************************************************************************
