@@ -1,3 +1,56 @@
+hostname
+ifconfig
+cd
+cd ..
+cd /
+printenv - to print all the env variables
+
+
+*******************************************************************************************************
+
+*******************************************************************************************************
+To generate new SSH key. Use the default location and set password. If you don't want to set password just enter with empty value.
+ssh-keygen -t rsa
+
+
+after running the aove command,Two files are created:
+id_rsa      ->      The private key.
+id_rsa.pub  ->      The public key.
+
+To change the password for ssh keygen
+ssh-keygen -p
+
+What shell your are using?
+echo $0
+*******************************************************************************************************
+
+
+*******************************************************************************************************
+pyenv
+*******************************************************************************************************
+To see what are python versions used in your system globally
+pyenv global
+
+to install new python version 3.4.0 in your system
+pyenv install 3.4.0
+
+to view what are the available versions in your system
+pyenv versions
+
+
+to change the global python version
+pyenv global 3.4.0
+
+to set the python version 3.4.0
+pyenv local 3.4.0
+
+to  see the installed python versions in using pyenv
+ls ~/.pyenv/versions/
+*******************************************************************************************************
+
+
+
+
 *******************************************************************************************************
 For loop in bash
 *******************************************************************************************************
@@ -36,6 +89,7 @@ for str in ${myArray[@]}; do
   brazil ws use --versionset $str/development
   sed -i 's/SAM_ASSUME_ACCOUNT_ID/SAM_CONDUIT_ADMIN_ACCOUNT_ID/g' SAMToolkit.devenv
   sed -i 's/SAM_IDENTITY_BROKER_POSIX_GROUP_NAME/# SAM_IDENTITY_BROKER_POSIX_GROUP_NAME/g' SAMToolkit.devenv
+  bb
   ./sam package && ./sam deploy
   echo you wanna move to next folder?
   read sucess
@@ -75,6 +129,10 @@ grep -r searchterm *
 *******************************************************************************************************
 sed commands
 *******************************************************************************************************
+for mac:
+after running the sed command there will many back file will be created use the git clean -f command to delete the newly created file. Just make sure you are not deleting any new file you interntionally added. for that commit the previouse changes 
+
+
 1. sed 's/word1/word2/g' input.file
 the above command will replace the word1 by word2 and print on the screen. It will not update the file.
 
